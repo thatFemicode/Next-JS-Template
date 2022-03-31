@@ -43,6 +43,20 @@ const Transition = ({ children, location }) => {
       y: -100,
     });
   };
+  //   Unused animated functions
+  //   function enter(node) {
+  //     gsap.from(node, {
+  //       duration: 0.5,
+  //       autoAlpha: 0,
+  //     });
+  //   }
+
+  //   function exit(node) {
+  //     gsap.to(node, {
+  //       duration: 0.5,
+  //       autoAlpha: 0,
+  //     });
+  //   }
   const nodeRef = useRef(null);
   const parentNode = useRef(null);
   return (
@@ -53,8 +67,14 @@ const Transition = ({ children, location }) => {
           timeout={500}
           onEnter={onEnterHandler}
           onExit={onExitHandler}
+          in={true}
+          mountOnEnter={true}
+          unmountOnExit={true}
+          nodeRef={nodeRef.current}
         >
-          <>{children}</>
+          <div ref={nodeRef.current} style={{ height: "100%" }}>
+            {children}
+          </div>
         </ReactTransition>
       </TransitionGroup>
     </div>

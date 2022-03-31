@@ -6,13 +6,16 @@ import Navbar from "@/layout/Navbar/Navbar";
 import CustomCursor from "@/layout/CustomCursor/CustomCursor";
 import Head from "next/head";
 import Laying from "@/layout/Laying/Laying";
+import React, { useRef } from "react";
+import { MainStyled } from "Styling/MainStyled";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
   }
+
   return (
-    <>
+    <MainStyled>
       <Head>
         <title>Oluwafemi</title>
         <meta name="description" content="Awesome YouTube channel" />
@@ -20,13 +23,11 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <CustomCursor />
-        <Navbar />
         <Laying>
           <Component {...pageProps} />
         </Laying>
-        <Footer />
       </ThemeProvider>
-    </>
+    </MainStyled>
   );
 }
 
