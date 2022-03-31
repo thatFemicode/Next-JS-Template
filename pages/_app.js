@@ -5,6 +5,8 @@ import Footer from "@/layout/Footer/Footer";
 import Navbar from "@/layout/Navbar/Navbar";
 import CustomCursor from "@/layout/CustomCursor/CustomCursor";
 import Head from "next/head";
+import Laying from "@/layout/Laying/Laying";
+
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
@@ -19,7 +21,9 @@ function MyApp({ Component, pageProps }) {
         <GlobalStyle />
         <CustomCursor />
         <Navbar />
-        <Component {...pageProps} />
+        <Laying>
+          <Component {...pageProps} />
+        </Laying>
         <Footer />
       </ThemeProvider>
     </>
